@@ -123,7 +123,7 @@ exports.onCreatePage = ({ page, boundActionCreators }) => {
   return new Promise(resolve => {
     const oldPage = Object.assign({}, page);
     // Remove trailing slash unless page is /
-    page.path = _path => (_path === `/` ? _path : _path.replace(/\/$/, ``));
+    page.path =( _path => (_path === `/` ? _path : _path.replace(/\/$/, ``)))(page.path);
     if (page.path !== oldPage.path) {
       // Replace new page with old page
       deletePage(oldPage);
